@@ -57,6 +57,7 @@ $(document).ready(function(){
             local_save['balance'] -= parseInt(price);
             refreshDisplay();
         }
+        $("#rate_display").text(getRateAll());
     }
 
     $("#btn-dig").click(function(){
@@ -74,7 +75,7 @@ $(document).ready(function(){
 
     setInterval(() => {
         var rate = getRateAll();
-        local_save['balance'] += rate/0.25;
+        local_save['balance'] += Math.ceil(rate*0.25);
         $("#kgs_display").text(local_save['balance']);
         $("#rate_display").text(rate);
     }, 250);
