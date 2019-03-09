@@ -2,7 +2,8 @@ $(document).ready(function(){
 
     var saveGame = () => localStorage.boring_data = JSON.stringify(local_save);;
     var loadSave = () => local_save = JSON.parse(localStorage.boring_data);
-
+    var getRate = (i) => buildings[i]['base_speed']*local_save['buildings'][i];
+    // newGame();
     function newGame(){
         local_save = {
             name: '',
@@ -50,12 +51,31 @@ $(document).ready(function(){
     refreshDisplay();
 
     function buyBuilding(type){
-        local_save['buildings'][type]++;
-        refreshDisplay();
+        price = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, local_save['buildings'][type]));
+        if(price <= local_save['balance']){
+            local_save['buildings'][type]++;
+            local_save['balance'] -= parseInt(price);
+            refreshDisplay();
+        }
     }
 
     $("#btn-dig").click(function(){
         local_save['balance']++;
         refreshDisplay();
     });
+
+    function getRateAll(){
+        var total = 0;
+        for(i in buildings){
+            total += Math.ceil(getRate(i));
+        }
+        return total;
+    }
+
+    setInterval(() => {
+        var rate = getRateAll();
+        local_save['balance'] += rate/0.25;
+        $("#kgs_display").text(local_save['balance']);
+        $("#rate_display").text(rate);
+    }, 250);
 });
