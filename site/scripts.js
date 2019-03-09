@@ -27,7 +27,9 @@ $(document).ready(function(){
                     "</div>"+
                     "<div class='col-md-9'>"+
                         "<b>"+ buildings[keys[i]]['name'] +"</b> ["+ local_save['buildings'][keys[i]] +"]<br>"+
-                        "<span class='bldg-cost'>00000</span> KG(s)"+
+                        "<span class='bldg-cost'>"+ 
+                        Math.floor(buildings[keys[i]]['base_cost'] * Math.pow(1.15, local_save['buildings'][keys[i]]))+
+                        "</span> KG(s)"+
                     "</div>"+
                 "</div>"
             );
@@ -37,11 +39,20 @@ $(document).ready(function(){
     function refreshDisplay(){
         $("#kgs_display").text(local_save['balance']);
         showBoxes();
+        $(".bldg-slot").click(function(){
+            type = $(this).find('.slot-name').text();
+            buyBuilding(type);
+        });
     }
 
     window.onunload = function(){saveGame();} //Automatically save game data when user leaves
     if(!localStorage.boring_data){newGame();}else{loadSave();} //If save game does not exist. Create new one.
     refreshDisplay();
+
+    function buyBuilding(type){
+        local_save['buildings'][type]++;
+        refreshDisplay();
+    }
 
     $("#btn-dig").click(function(){
         local_save['balance']++;
