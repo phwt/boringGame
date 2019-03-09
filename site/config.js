@@ -6,6 +6,13 @@ buildings = {
         base_cost: 20,
         base_speed: 1
     },
+    "rods":{
+        name: "God's Rods",
+        description: "",
+        icon: "satellite-dish.png",
+        base_cost: 300000,
+        base_speed: 200
+    },
     "excavator":{
         name: "Excavator",
         description: "",
@@ -26,13 +33,6 @@ buildings = {
         icon: "satellite-dish.png",
         base_cost: 14000,
         base_speed: 50
-    },
-    "rods":{
-        name: "God's Rods",
-        description: "",
-        icon: "satellite-dish.png",
-        base_cost: 300000,
-        base_speed: 200
     },
     "laser":{
         name: "LASER",
