@@ -75,8 +75,8 @@ $(document).ready(function(){
 
     setInterval(() => {
         var rate = getRateAll();
-        local_save['balance'] += Math.ceil(rate*0.25);
+        local_save['balance'] += Math.ceil(rate*0.1);
         $("#kgs_display").text(local_save['balance']);
         $("#rate_display").text(rate);
-    }, 250);
+    }, 100);
 });
