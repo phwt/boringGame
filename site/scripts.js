@@ -1,8 +1,7 @@
 $(document).ready(function(){
 
-    function savegame(){
-        localStorage.boring_data = JSON.stringify(local_save);
-    }
+    var saveGame = () => localStorage.boring_data = JSON.stringify(local_save);;
+    var loadSave = () => local_save = JSON.parse(localStorage.boring_data);
 
     function newGame(){
         local_save = {
@@ -13,38 +12,39 @@ $(document).ready(function(){
         for(i in buildings){
             Object.assign(local_save['buildings'], {[i]: 0})
         }
-        console.log(JSON.stringify(local_save));
         localStorage.boring_data = JSON.stringify(local_save);
     }
 
-    function loadSave(){
-        local_save = JSON.parse(localStorage.boring_data);
+    function showBoxes(){
+        $("#bldg-slot-area").empty();
+        keys = Object.keys(buildings);
+        for(i=0; i < keys.length; i++){
+            $("#bldg-slot-area").append(
+                "<div class='bldg-slot row no-gutters'>"+
+                    "<span class='slot-name' style='display:none'>"+keys[i]+"</span>"+
+                    "<div class='col-md-3 text-center'>"+
+                        "<img src='assets/"+ buildings[keys[i]]['icon'] +"'/>"+
+                    "</div>"+
+                    "<div class='col-md-9'>"+
+                        "<b>"+ buildings[keys[i]]['name'] +"</b> ["+ local_save['buildings'][keys[i]] +"]<br>"+
+                        "<span class='bldg-cost'>00000</span> KG(s)"+
+                    "</div>"+
+                "</div>"
+            );
+        }
     }
 
-    window.onunload = function(){savegame();} //Automatically save game data when user leaves
+    function refreshDisplay(){
+        $("#kgs_display").text(local_save['balance']);
+        showBoxes();
+    }
 
-    if(!localStorage.boring_data){newgame();}else{loadSave();} //If save game does not exist. Create new one.
-
-    // var local_save = localStorage.boring_data;
-    $("#kgs_display").text(local_save['balance']);
+    window.onunload = function(){saveGame();} //Automatically save game data when user leaves
+    if(!localStorage.boring_data){newGame();}else{loadSave();} //If save game does not exist. Create new one.
+    refreshDisplay();
 
     $("#btn-dig").click(function(){
         local_save['balance']++;
-        $("#kgs_display").text(local_save['balance']);
+        refreshDisplay();
     });
-
-    keys = Object.keys(buildings);
-    for(i=0; i < keys.length; i++){
-        $("#bldg-slot-area").append(
-            "<div class='bldg-slot row no-gutters'>"+
-                "<div class='col-md-3 text-center'>"+
-                    "<img src='assets/"+ buildings[keys[i]]['icon'] +"'/>"+
-                "</div>"+
-                "<div class='col-md-9'>"+
-                    "<b>"+ buildings[keys[i]]['name'] +"</b><br>"+
-                    "<span class='bldg-cost'>00000</span> KG(s)"+
-                "</div>"+
-            "</div>"
-        );
-    }
 });
