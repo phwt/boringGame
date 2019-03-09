@@ -3,3 +3,22 @@
     height: 100%;
     color: white;
 }
+.side-bar > .col{
+    padding-top: 5%;
+}
+/*show column boundaries*/
+.side-bar > .col:nth-child(odd){
+    background: grey;
+}
+.bldg-slot{
+    padding: 8px;
+    /* margin-bottom: 1%; */
+    background: red;
+}
+.bldg-slot img{
+    /* display: inline-block; */
+    width: 70%;
+}
+.bldg-slot > .col-md-9{
+    padding-left: 1%;
+}
