@@ -3,6 +3,8 @@ $(document).ready(function(){
     var saveGame = () => localStorage.boring_data = JSON.stringify(local_save);;
     var loadSave = () => local_save = JSON.parse(localStorage.boring_data);
     var getRate = (i) => buildings[i]['base_speed']*local_save['buildings'][i];
+    var numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
     // newGame();
     function newGame(){
         local_save = {
@@ -38,12 +40,13 @@ $(document).ready(function(){
     }
 
     function refreshDisplay(){
-        $("#kgs_display").text(local_save['balance']);
+        $("#kgs_display").text(numberWithCommas(local_save['balance']));
         showBoxes();
         $(".bldg-slot").click(function(){
             type = $(this).find('.slot-name').text();
             buyBuilding(type);
         });
+        $("#rate_display").text(numberWithCommas(getRateAll()));
     }
 
     window.onunload = function(){saveGame();} //Automatically save game data when user leaves
@@ -57,7 +60,7 @@ $(document).ready(function(){
             local_save['balance'] -= parseInt(price);
             refreshDisplay();
         }
-        $("#rate_display").text(getRateAll());
+        $("#rate_display").text(numberWithCommas(getRateAll()));
     }
 
     $("#btn-dig").click(function(){
@@ -76,7 +79,7 @@ $(document).ready(function(){
     setInterval(() => {
         var rate = getRateAll();
         local_save['balance'] += Math.ceil(rate*0.1);
-        $("#kgs_display").text(local_save['balance']);
-        $("#rate_display").text(rate);
+        $("#kgs_display").text(numberWithCommas(local_save['balance']));
+        $("#rate_display").text(numberWithCommas(rate));
     }, 100);
 });
