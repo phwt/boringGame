@@ -34,7 +34,7 @@ $(document).ready(function(){
 
             $("#bldg-slot-area").append(
                 "<div class='bldg-slot row no-gutters'"+
-                    "disabled='"+ ((disabled) ? "true" : "false") +
+                    // "disabled='"+ ((disabled) ? "true" : "false") +
                     "' slot-name='" + keys[i] + "'>"+
                     "<div class='col-md-3 text-center'>"+
                         "<img src='assets/"+ icon +"'/>"+
@@ -46,6 +46,7 @@ $(document).ready(function(){
                 "</div>"
             );
         }
+        refreshSlot();
     }
 
     function refreshDisplay(){
@@ -59,14 +60,15 @@ $(document).ready(function(){
     }
 
     function refreshSlot(){
-        for(i in buildings){
-            Object.assign(local_save['buildings'], {[i]: 0})
-        }
-
         $(".bldg-slot").each(function(index){
-            cost = Math.floor(buildings[keys[i]]['base_cost'] * Math.pow(1.15, amount));
+            type = $(this).attr('slot-name');
+            cost = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, amount));
             disabled = cost > local_save['balance'];
-            $(this).attr("disabled", 'true');
+            if(disabled){
+                $(this).attr("disabled", "");
+            }else{
+                $(this).removeAttr("disabled");
+            }
         });
     }
 
@@ -101,6 +103,7 @@ $(document).ready(function(){
         var rate = getRateAll();
         local_save['balance'] += Math.ceil(rate*0.1);
         // refreshDisplay();
+        refreshSlot();
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
         $("#rate_display").text(numberWithCommas(rate));
     }, 100);
