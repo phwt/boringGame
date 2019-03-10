@@ -12,12 +12,14 @@
 }
 .bldg-slot{
     padding: 8px;
-    /* margin-bottom: 1%; */
     background: grey;
-}
+} 
 .bldg-slot:hover{
     background: black;
     cursor: pointer;
+}
+.bldg-slot[disabled]{
+    opacity: 0.4;
 }
 .bldg-slot img{
     /* display: inline-block; */

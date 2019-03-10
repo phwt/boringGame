@@ -21,18 +21,26 @@ $(document).ready(function(){
     function showBoxes(){
         $("#bldg-slot-area").empty();
         keys = Object.keys(buildings);
+        toBreak = 0;
         for(i=0; i < keys.length; i++){
+            icon = buildings[keys[i]]['icon'];
+            name = (toBreak == 1) ? "???????" : buildings[keys[i]]['name'];
+            amount = local_save['buildings'][keys[i]];
+            cost = Math.floor(buildings[keys[i]]['base_cost'] * Math.pow(1.15, amount));
+            disabled = cost > local_save['balance'];
+
+            if(toBreak == 2){break;}
+            if(amount==0){toBreak++;}
+
             $("#bldg-slot-area").append(
-                "<div class='bldg-slot row no-gutters'>"+
-                    "<span class='slot-name' style='display:none'>"+keys[i]+"</span>"+
+                "<div class='bldg-slot row no-gutters' "+ ((disabled) ? "disabled" : "") +">"+
+                    "<span class='slot-name' style='display:none'>"+ keys[i] +"</span>"+
                     "<div class='col-md-3 text-center'>"+
-                        "<img src='assets/"+ buildings[keys[i]]['icon'] +"'/>"+
+                        "<img src='assets/"+ icon +"'/>"+
                     "</div>"+
                     "<div class='col-md-9'>"+
-                        "<b>"+ buildings[keys[i]]['name'] +"</b> ["+ local_save['buildings'][keys[i]] +"]<br>"+
-                        "<span class='bldg-cost'>"+ 
-                        Math.floor(buildings[keys[i]]['base_cost'] * Math.pow(1.15, local_save['buildings'][keys[i]]))+
-                        "</span> KG(s)"+
+                        "<b>"+ name +"</b> ["+ amount +"]<br>"+
+                        "<span class='bldg-cost'>"+ cost + "</span> KG(s)"+
                     "</div>"+
                 "</div>"
             );
@@ -79,7 +87,8 @@ $(document).ready(function(){
     setInterval(() => {
         var rate = getRateAll();
         local_save['balance'] += Math.ceil(rate*0.1);
-        $("#kgs_display").text(numberWithCommas(local_save['balance']));
-        $("#rate_display").text(numberWithCommas(rate));
+        refreshDisplay();
+        // $("#kgs_display").text(numberWithCommas(local_save['balance']));
+        // $("#rate_display").text(numberWithCommas(rate));
     }, 100);
 });
