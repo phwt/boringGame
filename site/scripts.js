@@ -33,8 +33,9 @@ $(document).ready(function(){
             if(amount==0){toBreak++;}
 
             $("#bldg-slot-area").append(
-                "<div class='bldg-slot row no-gutters' "+ ((disabled) ? "disabled" : "") +">"+
-                    "<span class='slot-name' style='display:none'>"+ keys[i] +"</span>"+
+                "<div class='bldg-slot row no-gutters'"+
+                    "disabled='"+ ((disabled) ? "true" : "false") +
+                    "' slot-name='" + keys[i] + "'>"+
                     "<div class='col-md-3 text-center'>"+
                         "<img src='assets/"+ icon +"'/>"+
                     "</div>"+
@@ -51,10 +52,22 @@ $(document).ready(function(){
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
         showBoxes();
         $(".bldg-slot").click(function(){
-            type = $(this).find('.slot-name').text();
+            type = $(this).attr('slot-name');
             buyBuilding(type);
         });
         $("#rate_display").text(numberWithCommas(getRateAll()));
+    }
+
+    function refreshSlot(){
+        for(i in buildings){
+            Object.assign(local_save['buildings'], {[i]: 0})
+        }
+
+        $(".bldg-slot").each(function(index){
+            cost = Math.floor(buildings[keys[i]]['base_cost'] * Math.pow(1.15, amount));
+            disabled = cost > local_save['balance'];
+            $(this).attr("disabled", 'true');
+        });
     }
 
     window.onunload = function(){saveGame();} //Automatically save game data when user leaves
@@ -87,8 +100,8 @@ $(document).ready(function(){
     setInterval(() => {
         var rate = getRateAll();
         local_save['balance'] += Math.ceil(rate*0.1);
-        refreshDisplay();
-        // $("#kgs_display").text(numberWithCommas(local_save['balance']));
-        // $("#rate_display").text(numberWithCommas(rate));
+        // refreshDisplay();
+        $("#kgs_display").text(numberWithCommas(local_save['balance']));
+        $("#rate_display").text(numberWithCommas(rate));
     }, 100);
 });
