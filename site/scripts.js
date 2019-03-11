@@ -134,7 +134,8 @@ $(document).ready(function(){
 
     $("#btn-dig").click(function(){
         local_save['balance']++;
-        refreshDisplay();
+        $("#kgs_display").text(numberWithCommas(local_save['balance']));
+        // refreshDisplay();
     });
 
     function getRateAll(){
