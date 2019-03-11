@@ -56,3 +56,46 @@ buildings = {
         base_speed: 40000
     }
 }
+
+upgrades = {
+    "dig1":{
+        name: "Dig Upgrade 1",
+        description: "5kg per dig",
+        icon: "satellite-dish.png",
+        cost: 200,
+        tgt_bldg: "dig",
+        multp: 5
+    },
+    "dig1":{
+        name: "Dig Upgrade 2",
+        description: "100kg per dig",
+        icon: "satellite-dish.png",
+        cost: 120000,
+        tgt_bldg: "dig",
+        multp: 100
+    },
+    "dig1":{
+        name: "Dig Upgrade 3",
+        description: "500kg per dig",
+        icon: "satellite-dish.png",
+        cost: 400000,
+        tgt_bldg: "dig",
+        multp: 500
+    },
+    "dig1":{
+        name: "Dig Upgrade 4",
+        description: "10000kg per dig",
+        icon: "satellite-dish.png",
+        cost: 300000,
+        tgt_bldg: "dig",
+        multp: 10000
+    },
+    "drone1":{
+        name: "Drone Upgrade 1",
+        description: "Drone x2",
+        icon: "satellite-dish.png",
+        cost: 0,
+        tgt_bldg: "1_drone",
+        multp: 2
+    }
+}
