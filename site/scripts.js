@@ -10,10 +10,14 @@ $(document).ready(function(){
         local_save = {
             name: '',
             balance: 0,
-            buildings: {}
+            buildings: {},
+            upgrades: {}
         }
         for(i in buildings){
             Object.assign(local_save['buildings'], {[i]: 0})
+        }
+        for(i in upgrades){
+            Object.assign(local_save['upgrades'], {[i]: 0})
         }
         localStorage.boring_data = JSON.stringify(local_save);
     }
@@ -53,6 +57,9 @@ $(document).ready(function(){
         $("#upgrade-slot-area").empty();
         keys = Object.keys(upgrades);
         for(i=0; i < keys.length; i++){
+
+            if(local_save['upgrades'][keys[i]]){continue;}
+
             icon = upgrades[keys[i]]['icon'];
             name = upgrades[keys[i]]['name'];
             cost = upgrades[keys[i]]['cost'];
@@ -78,9 +85,14 @@ $(document).ready(function(){
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
         showBoxes();
         showBoxesU();
-        $(".bldg-slot").click(function(){
+        $(".slot").click(function(){
             type = $(this).attr('slot-name');
-            buyBuilding(type);
+            if($(this).hasClass('bldg-slot')){
+                slot = 'bldg';
+            }else{
+                slot = 'upgr';
+            }
+            buyBuilding(type, slot);
         });
         $("#rate_display").text(numberWithCommas(getRateAll()));
     }
@@ -106,11 +118,15 @@ $(document).ready(function(){
     if(!localStorage.boring_data){newGame();}else{loadSave();} //If save game does not exist. Create new one.
     refreshDisplay();
 
-    function buyBuilding(type){
-        price = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, local_save['buildings'][type]));
-        if(price <= local_save['balance']){
-            local_save['buildings'][type]++;
-            local_save['balance'] -= parseInt(price);
+    function buyBuilding(type, slot){
+        if(slot == 'bldg')
+            cost = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, local_save['buildings'][type]));
+        else
+            cost = upgrades[type]['cost'];
+
+        if(cost <= local_save['balance']){
+            local_save[(slot == 'bldg') ? 'buildings' : 'upgrades'][type]++;
+            local_save['balance'] -= parseInt(cost);
             refreshDisplay();
         }
         $("#rate_display").text(numberWithCommas(getRateAll()));
