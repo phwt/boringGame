@@ -66,7 +66,7 @@ upgrades = {
         tgt_bldg: "dig",
         multp: 5
     },
-    "dig1":{
+    "dig2":{
         name: "Dig Upgrade 2",
         description: "100kg per dig",
         icon: "satellite-dish.png",
@@ -74,7 +74,7 @@ upgrades = {
         tgt_bldg: "dig",
         multp: 100
     },
-    "dig1":{
+    "dig3":{
         name: "Dig Upgrade 3",
         description: "500kg per dig",
         icon: "satellite-dish.png",
@@ -82,7 +82,7 @@ upgrades = {
         tgt_bldg: "dig",
         multp: 500
     },
-    "dig1":{
+    "dig4":{
         name: "Dig Upgrade 4",
         description: "10000kg per dig",
         icon: "satellite-dish.png",

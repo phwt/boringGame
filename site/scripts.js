@@ -60,7 +60,7 @@ $(document).ready(function(){
 
             $("#upgrade-slot-area").append(
                 "<div class='slot upgrade-slot row no-gutters'"+
-                    // "disabled='"+ ((disabled) ? "true" : "false") +
+                    //"disabled='"+ ((disabled) ? "true" : "false") +
                     "' slot-name='" + keys[i] + "'>"+
                     "<div class='col-md-3 text-center'>"+
                         "<img src='assets/"+ icon +"'/>"+
@@ -86,9 +86,13 @@ $(document).ready(function(){
     }
 
     function refreshSlot(){
-        $(".bldg-slot").each(function(index){
+        $(".slot").each(function(index){
             type = $(this).attr('slot-name');
-            cost = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, amount));
+            if($(this).hasClass('bldg-slot')){
+                cost = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, amount));    
+            }else{
+                cost = upgrades[type]['cost'];
+            }
             disabled = cost > local_save['balance'];
             if(disabled){
                 $(this).attr("disabled", "");
