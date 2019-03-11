@@ -10,22 +10,22 @@
 .side-bar > .col:nth-child(odd){
     /* background: green; */
 }
-.bldg-slot{
+.slot{
     padding: 8px;
     background: grey;
 } 
-.bldg-slot:hover{
+.slot:hover{
     background: black;
     cursor: pointer;
 }
-.bldg-slot[disabled]{
+.slot[disabled]{
     opacity: 0.4;
 }
-.bldg-slot img{
+.slot img{
     /* display: inline-block; */
     width: 70%;
 }
-.bldg-slot > .col-md-9{
+.slot > .col-md-9{
     padding-left: 1%;
 }
 #btn-dig{

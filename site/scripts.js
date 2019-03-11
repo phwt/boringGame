@@ -33,7 +33,7 @@ $(document).ready(function(){
             if(amount==0){toBreak++;}
 
             $("#bldg-slot-area").append(
-                "<div class='bldg-slot row no-gutters'"+
+                "<div class='slot bldg-slot row no-gutters'"+
                     // "disabled='"+ ((disabled) ? "true" : "false") +
                     "' slot-name='" + keys[i] + "'>"+
                     "<div class='col-md-3 text-center'>"+
@@ -49,9 +49,35 @@ $(document).ready(function(){
         refreshSlot();
     }
 
+    function showBoxesU(){
+        $("#upgrade-slot-area").empty();
+        keys = Object.keys(upgrades);
+        for(i=0; i < keys.length; i++){
+            icon = upgrades[keys[i]]['icon'];
+            name = upgrades[keys[i]]['name'];
+            cost = upgrades[keys[i]]['cost'];
+            disabled = cost > local_save['balance'];
+
+            $("#upgrade-slot-area").append(
+                "<div class='slot upgrade-slot row no-gutters'"+
+                    // "disabled='"+ ((disabled) ? "true" : "false") +
+                    "' slot-name='" + keys[i] + "'>"+
+                    "<div class='col-md-3 text-center'>"+
+                        "<img src='assets/"+ icon +"'/>"+
+                    "</div>"+
+                    "<div class='col-md-9'>"+
+                        "<b>"+ name +"</b><br>"+
+                        "<span class='upgrade-cost'>"+ cost + "</span> KG(s)"+
+                    "</div>"+
+                "</div>"
+            );
+        }
+    }
+
     function refreshDisplay(){
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
         showBoxes();
+        showBoxesU();
         $(".bldg-slot").click(function(){
             type = $(this).attr('slot-name');
             buyBuilding(type);
