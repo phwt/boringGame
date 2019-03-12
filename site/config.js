@@ -1,56 +1,56 @@
 buildings = {
-    "1_drone":{
-        name: "Mining Drone",
-        description: "",
+    "1_biof":{
+        name: "Biofuel Plant",
+        description: "Power from the living matter",
         icon: "unmanned-aerial-vehicle.png",
         base_cost: 20,
         base_speed: 1
     },
-    "2_excavator":{
-        name: "Excavator",
-        description: "",
+    "2_coal":{
+        name: "Fossil-fuel Power Plant",
+        description: "Burn a thing leftover by our predecessor",
         icon: "satellite-dish.png",
         base_cost: 100,
         base_speed: 4
     },
-    "3_boring":{
-        name: "Boring Plant",
-        description: "A vertical boring plant lander. Just boring as that.",
+    "3_sun":{
+        name: "Photovoltaic Station",
+        description: "Travels many millions miles to power us...and melts our chocolate",
         icon: "satellite-dish.png",
         base_cost: 700,
         base_speed: 8
     },
-    "4_seismic":{
-        name: "Seismast",
-        description: "Break down the rocks using artificial earthquake.",
+    "4_wind":{
+        name: "Wind Farm",
+        description: "Make a use of a whirlwind",
         icon: "satellite-dish.png",
         base_cost: 14000,
         base_speed: 50
     },
-    "5_rods":{
-        name: "God's Rods",
-        description: "",
+    "5_water":{
+        name: "Hydroelectric Dam",
+        description: "Let the current and gravity do the job",
         icon: "satellite-dish.png",
         base_cost: 300000,
         base_speed: 200
     },
-    "6_laser":{
-        name: "LASER",
-        description: "Light Assisted Self-Excavating Rig",
+    "6_oil":{
+        name: "Offshore Rig",
+        description: "Excavate raw energy from the middle of the ocean",
         icon: "satellite-dish.png",
         base_cost: 500000,
         base_speed: 1500
     },
-    "7_":{
-        name: "7",
-        description: "",
+    "7_thermal":{
+        name: "Geothermal Plant",
+        description: "Earth powering the earth",
         icon: "satellite-dish.png",
         base_cost: 50000000,
         base_speed: 8000
     },
-    "8_":{
-        name: "8",
-        description: "",
+    "8_nuke":{
+        name: "Nuclaer Power Station",
+        description: "From a weapon of mass destruction to long-lasting clean enegy",
         icon: "satellite-dish.png",
         base_cost: 120000000,
         base_speed: 40000
