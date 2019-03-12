@@ -13,9 +13,11 @@
 .slot{
     padding: 8px;
     background: grey;
+    transition: .2s;
 } 
 .slot:hover{
-    background: black;
+    /* background: black; */
+    opacity: 0.5;
     cursor: pointer;
 }
 .slot[disabled]{
