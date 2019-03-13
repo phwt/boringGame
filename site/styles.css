@@ -32,17 +32,20 @@ body{
 }
 .slot img{
     /* display: inline-block; */
-    width: 70%;
+    /* top: 50%; */
+    /* transform: translateY(25%); */
+    width: 50%;
 }
 .slot > .col-md-9{
     padding-left: 1%;
 }
 #btn-dig{
-    width: 50%;
+    width: 30%;
     height: 50%;
     position: absolute;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);margin-top: 5%;
+    margin-top: 5%;
 }
 ::-webkit-scrollbar              {display: none}
 ::-webkit-scrollbar-button       {}
