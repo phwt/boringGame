@@ -83,3 +83,6 @@ body{
 .slot-cost b{
     font-weight: 600;
 }
+.text-muted{
+    font-size: 12px;
+}

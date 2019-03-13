@@ -148,13 +148,16 @@ $(document).ready(function(){
     }
 
     var outfocus = 0;
+    $('.focus-notice').hide();
     $(window).focusout(function() {
         outfocus = 1;
         document.title = "Boring Game - Halves Production";
+        $('.focus-notice').toggle();
     });
     $(window).focus(function() {
         outfocus = 0;
         document.title = "Boring Game - Full Production";
+        $('.focus-notice').toggle();
     });
 
     setInterval(() => {
