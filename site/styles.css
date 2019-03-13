@@ -47,3 +47,7 @@ body{
 ::-webkit-scrollbar-thumb        {}
 ::-webkit-scrollbar-corner       {}
 ::-webkit-resizer                {}
+
+#btn-dig:active{
+    transform: translate(-50%, -45%);
+}
