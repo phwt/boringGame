@@ -8,6 +8,7 @@
 }
 body{
     background: #555;
+    font-family: 'Roboto', sans-serif;
 }
 /*show column boundaries*/
 .side-bar > .col:nth-child(odd){
@@ -60,4 +61,22 @@ body{
     font-size: 2em;
     font-weight: bold;
     opacity: 0.3;
+}
+/* .ui-set .col-lg-2{
+    width: 35% !important;
+    display:block;
+}
+
+.ui-set .col-lg-8{
+    width: 90% !important;
+    display:block;
+} */
+#kgs_display{
+    font-weight: 700;
+}
+.slot-cost{
+    font-weight: 300;
+}
+.slot-cost b{
+    font-weight: 600;
 }

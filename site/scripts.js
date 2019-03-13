@@ -44,9 +44,9 @@ $(document).ready(function(){
                     "<div class='col-md-3 text-center'>"+
                         "<img src='assets/"+ icon +"'/>"+
                     "</div>"+
-                    "<div class='col-md-9'>"+
+                    "<div class='col-md-9 slot-cost'>"+
                         "<b>"+ name +"</b><br>"+
-                        "<span class='bldg-cost'>"+ cost + "</span> KG(s)"+
+                        "<span class='bldg-cost'>"+ cost + "</span> MW(s)"+
                     "</div>"+
                 "</div>"
             );
@@ -73,9 +73,9 @@ $(document).ready(function(){
                     "<div class='col-md-3 text-center'>"+
                         "<img src='assets/"+ icon +"'/>"+
                     "</div>"+
-                    "<div class='col-md-9'>"+
+                    "<div class='col-md-9 slot-cost'>"+
                         "<b>"+ name +"</b><br>"+
-                        "<span class='upgrade-cost'>"+ cost + "</span> KG(s)"+
+                        "<span class='upgrade-cost'>"+ cost + "</span> MW(s)"+
                     "</div>"+
                 "</div>"
             );
