@@ -133,9 +133,10 @@ $(document).ready(function(){
     }
 
     $("#btn-dig").click(function(){
-        for(i in local_save['upgrades']){
-            total += Math.ceil(getRate(i));
-        }
+        // var total = 0;
+        // for(i in local_save['upgrades']){
+            // total += Math.ceil(getRate(i));
+        // }
         local_save['balance']++;
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
         // refreshDisplay();
