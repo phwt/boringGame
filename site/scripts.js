@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     var saveGame = () => localStorage.boring_data = JSON.stringify(local_save);;
     var loadSave = () => local_save = JSON.parse(localStorage.boring_data);
-    var getRate = (i) => buildings[i]['base_speed']*local_save['buildings'][i];
+    var getRate = (i) => (buildings[i]['base_speed'] * getUpgradeLevel(i)) * local_save['buildings'][i];
     var numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     // newGame();
@@ -13,20 +13,21 @@ $(document).ready(function(){
             buildings: {},
             upgrades: {}
         }
-        for(i in buildings){
-            Object.assign(local_save['buildings'], {[i]: 0})
-        }
-        for(i in upgrades){
-            Object.assign(local_save['upgrades'], {[i]: 0})
-        }
+        for(i in buildings){Object.assign(local_save['buildings'], {[i]: 0})}
+        for(i in upgrades){Object.assign(local_save['upgrades'], {[i]: 0})}
         localStorage.boring_data = JSON.stringify(local_save);
     }
+
+    window.onunload = function(){saveGame();} //Automatically save game data when user leaves
+    if(!localStorage.boring_data){newGame();}else{loadSave();} //If save game does not exist. Create new one.
+    refreshDisplay();
 
     function showBoxes(){
         $("#bldg-slot-area").empty();
         keys = Object.keys(buildings);
         toBreak = 0;
         for(i=0; i < keys.length; i++){
+
             icon = buildings[keys[i]]['icon'];
             name = (toBreak == 1) ? "???????" : buildings[keys[i]]['name'];
             amount = local_save['buildings'][keys[i]];
@@ -37,9 +38,7 @@ $(document).ready(function(){
             if(amount==0){toBreak++;}
 
             $("#bldg-slot-area").append(
-                "<div style='position: relative' class='slot bldg-slot row no-gutters'"+
-                    // "disabled='"+ ((disabled) ? "true" : "false") +
-                    "' slot-name='" + keys[i] + "'>"+
+                "<div style='position: relative' class='slot bldg-slot row no-gutters' slot-name='" + keys[i] + "'>"+
                     "<span class='slot-number'>"+amount+"</span>"+
                     "<div class='col-md-3 text-center'>"+
                         "<img src='assets/"+ icon +"'/>"+
@@ -51,10 +50,7 @@ $(document).ready(function(){
                 "</div>"
             );
         }
-        refreshSlot();
-    }
 
-    function showBoxesU(){
         $("#upgrade-slot-area").empty();
         keys = Object.keys(upgrades);
         for(i=0; i < keys.length; i++){
@@ -67,9 +63,7 @@ $(document).ready(function(){
             disabled = cost > local_save['balance'];
 
             $("#upgrade-slot-area").append(
-                "<div class='slot upgrade-slot row no-gutters'"+
-                    //"disabled='"+ ((disabled) ? "true" : "false") +
-                    "' slot-name='" + keys[i] + "'>"+
+                "<div class='slot upgrade-slot row no-gutters' slot-name='" + keys[i] + "'>"+
                     "<div class='col-md-3 text-center'>"+
                         "<img src='assets/"+ icon +"'/>"+
                     "</div>"+
@@ -84,42 +78,44 @@ $(document).ready(function(){
 
     function refreshDisplay(){
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
+        $("#rate_display").text(numberWithCommas(getRateAll()));
         showBoxes();
-        showBoxesU();
         $(".slot").click(function(){
             type = $(this).attr('slot-name');
-            if($(this).hasClass('bldg-slot')){
-                slot = 'bldg';
-            }else{
-                slot = 'upgr';
-            }
-            buyBuilding(type, slot);
+            buyBuilding(type, ($(this).hasClass('bldg-slot')) ? 'bldg' : 'upgr');
         });
-        $("#rate_display").text(numberWithCommas(getRateAll()));
+        refreshSlot();
     }
 
     function refreshSlot(){
         $(".slot").each(function(index){
             type = $(this).attr('slot-name');
             amount = local_save['buildings'][type];
-            if($(this).hasClass('bldg-slot')){
+            if($(this).hasClass('bldg-slot'))
                 cost = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, amount));    
-            }else{
+            else
                 cost = upgrades[type]['cost'];
-            }
-            // disabled = cost > local_save['balance'];
-            if(cost > local_save['balance']){
+
+            if(cost > local_save['balance'])
                 $(this).attr("disabled", "");
-            }else{
+            else
                 $(this).removeAttr("disabled");
-            }
         });
     }
-
-    window.onunload = function(){saveGame();} //Automatically save game data when user leaves
-    if(!localStorage.boring_data){newGame();}else{loadSave();} //If save game does not exist. Create new one.
-    refreshDisplay();
-
+    function getUpgradeLevel(type){
+        var level = 1;
+        for(i in upgrades){
+            // console.log("Chcking for: " + i);
+            if((upgrades[i]['tgt_bldg'] == type)  && (local_save['upgrades'][i])){
+                // console.log("it's a hit");
+                multp = upgrades[i]['multp'];
+                if(multp > level)
+                    level = upgrades[i]['multp'];
+            }
+        }
+        return level;
+    }
+    console.log(getUpgradeLevel('dick'));
     function buyBuilding(type, slot){
         if(slot == 'bldg')
             cost = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, local_save['buildings'][type]));
@@ -135,27 +131,29 @@ $(document).ready(function(){
     }
 
     $("#btn-dig").click(function(){
-        // var total = 0;
-        // for(i in local_save['upgrades']){
-            // total += Math.ceil(getRate(i));
-        // }
-        local_save['balance']++;
+        local_save['balance']+=getUpgradeLevel('dig');
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
-        // refreshDisplay();
     });
 
     function getRateAll(){
         var total = 0;
-        for(i in buildings){
-            total += Math.ceil(getRate(i));
-        }
+        for(i in buildings){total += Math.ceil(getRate(i));}
         return total;
     }
 
+    var outfocus = 0;
+    $(window).focusout(function() {
+        outfocus = 1;
+        document.title = "Boring Game - Halves Production";
+    });
+    $(window).focus(function() {
+        outfocus = 0;
+        document.title = "Boring Game - Full Production";
+    });
+
     setInterval(() => {
-        var rate = getRateAll();
+        var rate = Math.floor(getRateAll() / ((outfocus) ? 2 : 1));
         local_save['balance'] += Math.ceil(rate*0.1);
-        // refreshDisplay();
         refreshSlot();
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
         $("#rate_display").text(numberWithCommas(rate));
