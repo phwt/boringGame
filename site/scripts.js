@@ -61,7 +61,7 @@ $(document).ready(function(){
 
             if(
                 local_save['upgrades'][keys[i]] || 
-                !local_save['buildings'][upgrade_sel['tgt_bldg']] ||
+                (!local_save['buildings'][upgrade_sel['tgt_bldg']] && keys[i].substring(0, 3) != 'dig') ||
                 !local_save['upgrades'][prev] && oftype 
             ){continue;}
 
