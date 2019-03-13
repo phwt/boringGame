@@ -101,13 +101,14 @@ $(document).ready(function(){
     function refreshSlot(){
         $(".slot").each(function(index){
             type = $(this).attr('slot-name');
+            amount = local_save['buildings'][type];
             if($(this).hasClass('bldg-slot')){
                 cost = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, amount));    
             }else{
                 cost = upgrades[type]['cost'];
             }
-            disabled = cost > local_save['balance'];
-            if(disabled){
+            // disabled = cost > local_save['balance'];
+            if(cost > local_save['balance']){
                 $(this).attr("disabled", "");
             }else{
                 $(this).removeAttr("disabled");
