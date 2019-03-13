@@ -54,12 +54,20 @@ $(document).ready(function(){
         $("#upgrade-slot-area").empty();
         keys = Object.keys(upgrades);
         for(i=0; i < keys.length; i++){
+            var upgrade_sel = upgrades[keys[i]];
 
-            if(local_save['upgrades'][keys[i]]){continue;}
+            oftype = parseInt(keys[i][keys[i].length - 1]) - 1;
+            prev = keys[i].substring(0, keys[i].length - 1) + oftype;
 
-            icon = upgrades[keys[i]]['icon'];
-            name = upgrades[keys[i]]['name'];
-            cost = upgrades[keys[i]]['cost'];
+            if(
+                local_save['upgrades'][keys[i]] || 
+                !local_save['buildings'][upgrade_sel['tgt_bldg']] ||
+                !local_save['upgrades'][prev] && oftype 
+            ){continue;}
+
+            icon = upgrade_sel['icon'];
+            name = upgrade_sel['name'];
+            cost = upgrade_sel['cost'];
             disabled = cost > local_save['balance'];
 
             $("#upgrade-slot-area").append(
@@ -105,9 +113,7 @@ $(document).ready(function(){
     function getUpgradeLevel(type){
         var level = 1;
         for(i in upgrades){
-            // console.log("Chcking for: " + i);
             if((upgrades[i]['tgt_bldg'] == type)  && (local_save['upgrades'][i])){
-                // console.log("it's a hit");
                 multp = upgrades[i]['multp'];
                 if(multp > level)
                     level = upgrades[i]['multp'];
@@ -115,7 +121,7 @@ $(document).ready(function(){
         }
         return level;
     }
-    console.log(getUpgradeLevel('dick'));
+
     function buyBuilding(type, slot){
         if(slot == 'bldg')
             cost = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, local_save['buildings'][type]));
