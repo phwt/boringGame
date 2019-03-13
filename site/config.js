@@ -59,33 +59,33 @@ buildings = {
 
 upgrades = {
     "dig1":{
-        name: "Dig Upgrade 1",
+        name: "Generator Upgrade 1",
         description: "5kg per dig",
-        icon: "satellite-dish.png",
+        icon: "up-arrow.png",
         cost: 200,
         tgt_bldg: "dig",
         multp: 5
     },
     "dig2":{
-        name: "Dig Upgrade 2",
+        name: "Generator Upgrade 2",
         description: "100kg per dig",
-        icon: "satellite-dish.png",
+        icon: "up-arrow.png",
         cost: 120000,
         tgt_bldg: "dig",
         multp: 100
     },
     "dig3":{
-        name: "Dig Upgrade 3",
+        name: "Generator Upgrade 3",
         description: "500kg per dig",
-        icon: "satellite-dish.png",
+        icon: "up-arrow.png",
         cost: 400000,
         tgt_bldg: "dig",
         multp: 500
     },
     "dig4":{
-        name: "Dig Upgrade 4",
+        name: "Generator Upgrade 4",
         description: "10000kg per dig",
-        icon: "satellite-dish.png",
+        icon: "up-arrow.png",
         cost: 300000,
         tgt_bldg: "dig",
         multp: 10000
@@ -93,7 +93,7 @@ upgrades = {
     "drone1":{
         name: "Drone Upgrade 1",
         description: "Drone x2",
-        icon: "satellite-dish.png",
+        icon: "up-arrow.png",
         cost: 0,
         tgt_bldg: "1_drone",
         multp: 2
