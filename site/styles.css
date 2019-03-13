@@ -1,5 +1,5 @@
 .side-bar{
-    background: black;
+    background: rgb(26, 26, 26);
     height: 100%;
     color: white;
 }
@@ -12,7 +12,7 @@
 }
 .slot{
     padding: 8px;
-    background: grey;
+    background: rgb(58, 58, 58);
     transition: .2s;
 } 
 .slot:hover{
