@@ -37,7 +37,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
-::-webkit-scrollbar              {}
+::-webkit-scrollbar              {display: none}
 ::-webkit-scrollbar-button       {}
 ::-webkit-scrollbar-track        {}
 ::-webkit-scrollbar-track-piece  {}
