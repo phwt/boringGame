@@ -23,6 +23,9 @@ body{
     opacity: 0.5;
     cursor: pointer;
 }
+.slot:active{
+    opacity: 0.3;
+}
 .slot[disabled]{
     opacity: 0.4;
 }
@@ -50,4 +53,11 @@ body{
 
 #btn-dig:active{
     transform: translate(-50%, -45%);
+}
+.slot-number{
+    position: absolute;
+    right: 16px;
+    font-size: 2em;
+    font-weight: bold;
+    opacity: 0.3;
 }

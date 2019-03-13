@@ -37,14 +37,15 @@ $(document).ready(function(){
             if(amount==0){toBreak++;}
 
             $("#bldg-slot-area").append(
-                "<div class='slot bldg-slot row no-gutters'"+
+                "<div style='position: relative' class='slot bldg-slot row no-gutters'"+
                     // "disabled='"+ ((disabled) ? "true" : "false") +
                     "' slot-name='" + keys[i] + "'>"+
+                    "<span class='slot-number'>"+amount+"</span>"+
                     "<div class='col-md-3 text-center'>"+
                         "<img src='assets/"+ icon +"'/>"+
                     "</div>"+
                     "<div class='col-md-9'>"+
-                        "<b>"+ name +"</b> ["+ amount +"]<br>"+
+                        "<b>"+ name +"</b><br>"+
                         "<span class='bldg-cost'>"+ cost + "</span> KG(s)"+
                     "</div>"+
                 "</div>"
