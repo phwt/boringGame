@@ -78,6 +78,7 @@ $(document).ready(function(){
             icon = upgrade_sel['icon'];
             name = upgrade_sel['name'];
             cost = upgrade_sel['cost'];
+            desc = upgrade_sel['description'];
             disabled = cost > local_save['balance'];
 
             $("#upgrade-slot-area").append(
@@ -88,6 +89,10 @@ $(document).ready(function(){
                     "<div class='col-md-9 slot-cost'>"+
                         "<b>"+ name +"</b><br>"+
                         "<span class='upgrade-cost'>"+ cost + "</span> MW(s)"+
+                    "</div>"+
+
+                    "<div class='description' >"+
+                        desc+
                     "</div>"+
                 "</div>"
             );
