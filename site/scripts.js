@@ -35,7 +35,8 @@ $(document).ready(function(){
             icon = buildings[keys[i]]['icon'];
             name = (toBreak == 1) ? "???????" : buildings[keys[i]]['name'];
             amount = local_save['buildings'][keys[i]];
-            desc = buildings[keys[i]]['description'];
+            desc = (toBreak == 1) ? "???????" : buildings[keys[i]]['description'];
+            speed = (toBreak == 1) ? "???????" : buildings[keys[i]]['base_speed'];
             cost = Math.floor(buildings[keys[i]]['base_cost'] * Math.pow(1.15, amount));
             disabled = cost > local_save['balance'];
 
@@ -53,8 +54,8 @@ $(document).ready(function(){
                         "<span class='bldg-cost'>"+ cost + "</span> MW(s)"+
                     "</div>"+
 
-                    "<div class='description' style='display: none;'>"+
-                        desc+
+                    "<div class='description' >"+
+                        desc+' - '+speed+' MW/s'+
                     "</div>"+
                 "</div>"
             );
@@ -139,7 +140,7 @@ $(document).ready(function(){
     }
 
     function buyBuilding(type, slot){
-        $('.slot').find(".description").show();
+        // $('.slot').find(".description").show();
         if(slot == 'bldg')
             cost = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, local_save['buildings'][type]));
         else
