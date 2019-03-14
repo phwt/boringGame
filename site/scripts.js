@@ -5,13 +5,17 @@ $(document).ready(function(){
     var getRate = (i) => (buildings[i]['base_speed'] * getUpgradeLevel(i)) * local_save['buildings'][i];
     var numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    // newGame();
+    // newGame();   
     function newGame(){
         local_save = {
             name: '',
             balance: 0,
             buildings: {},
-            upgrades: {}
+            upgrades: {},
+            stats: {
+                click: 0,
+                total_pwr: 0
+            }
         }
         for(i in buildings){Object.assign(local_save['buildings'], {[i]: 0})}
         for(i in upgrades){Object.assign(local_save['upgrades'], {[i]: 0})}
@@ -31,6 +35,7 @@ $(document).ready(function(){
             icon = buildings[keys[i]]['icon'];
             name = (toBreak == 1) ? "???????" : buildings[keys[i]]['name'];
             amount = local_save['buildings'][keys[i]];
+            desc = buildings[keys[i]]['description'];
             cost = Math.floor(buildings[keys[i]]['base_cost'] * Math.pow(1.15, amount));
             disabled = cost > local_save['balance'];
 
@@ -46,6 +51,10 @@ $(document).ready(function(){
                     "<div class='col-md-9 slot-cost'>"+
                         "<b>"+ name +"</b><br>"+
                         "<span class='bldg-cost'>"+ cost + "</span> MW(s)"+
+                    "</div>"+
+
+                    "<div class='description' style='display: none;'>"+
+                        desc+
                     "</div>"+
                 "</div>"
             );
@@ -92,6 +101,13 @@ $(document).ready(function(){
             type = $(this).attr('slot-name');
             buyBuilding(type, ($(this).hasClass('bldg-slot')) ? 'bldg' : 'upgr');
         });
+        $(".slot").hover(
+            function(){
+                $(this).find(".description").slideToggle("fast", function(){});
+            }, function(){
+                $(this).find(".description").slideToggle("fast", function(){});
+            }
+        );
         refreshSlot();
     }
 
@@ -123,6 +139,7 @@ $(document).ready(function(){
     }
 
     function buyBuilding(type, slot){
+        $('.slot').find(".description").show();
         if(slot == 'bldg')
             cost = Math.floor(buildings[type]['base_cost'] * Math.pow(1.15, local_save['buildings'][type]));
         else
@@ -137,8 +154,16 @@ $(document).ready(function(){
     }
 
     $("#btn-dig").click(function(){
-        local_save['balance']+=getUpgradeLevel('dig');
+        thiscycle = getUpgradeLevel('dig')
+        local_save['stats']['click']++;
+        local_save['stats']['total_pwr']+=thiscycle;
+        local_save['balance']+=thiscycle;
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
+    });
+
+    $(".slot").click(function(){
+        type = $(this).attr('slot-name');
+        buyBuilding(type, ($(this).hasClass('bldg-slot')) ? 'bldg' : 'upgr');
     });
 
     function getRateAll(){
@@ -147,22 +172,24 @@ $(document).ready(function(){
         return total;
     }
 
-    var outfocus = 0;
+        var outfocus = 0;
     $('.focus-notice').hide();
-    $(window).focusout(function() {
-        outfocus = 1;
-        document.title = "Boring Game - Halves Production";
-        $('.focus-notice').toggle();
-    });
-    $(window).focus(function() {
-        outfocus = 0;
-        document.title = "Boring Game - Full Production";
-        $('.focus-notice').toggle();
-    });
+    // $(window).focusout(function() {
+    //     outfocus = 1;
+    //     document.title = "Boring Game - Halves Production";
+    //     $('.focus-notice').toggle();
+    // });
+    // $(window).focus(function() {
+    //     outfocus = 0;
+    //     document.title = "Boring Game - Full Production";
+    //     $('.focus-notice').toggle();
+    // });
 
     setInterval(() => {
         var rate = Math.floor(getRateAll() / ((outfocus) ? 2 : 1));
-        local_save['balance'] += Math.ceil(rate*0.1);
+        var thiscycle = Math.ceil(rate*0.1);
+        local_save['balance'] += thiscycle;
+        local_save['stats']['total_pwr'] += thiscycle;
         refreshSlot();
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
         $("#rate_display").text(numberWithCommas(rate));
