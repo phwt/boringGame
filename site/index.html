@@ -12,56 +12,98 @@
     <script src="config_buildings.js"></script>
     <script src="config_upgrades.js"></script>
     <script src="config_story.js"></script>
-    <script src="canvas.js"></script>
+    <!-- <script src="canvas.js"></script> -->
     <script src="scripts.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div class="row no-gutters">
+
+    <table class="grid">
+        <tr>
+            <th class="ui-set side-bar">
+                <div class="col text-center" style="height:20%;">
+                    <h3>boringGame</h3><hr>
+                    Power Generatred (MWs)
+                    <h1 id="kgs_display">0</h1>
+                    <h5><span id="rate_display"></span> MW/s</h5>
+                    <span class="text-muted focus-notice">Productions are halved when losing focus</span>
+                </div>
+    
+                <div class="col text-center" style="height:20%;">
+                    <button id="btn-dig" class="btn btn-secondary">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+    
+                <div class="col" style="height:60%;padding: 0;box-sizing: content-box;">
+                    <h3 class="text-center">Buildings</h3>
+                    <div id="bldg-slots" style="height: 90%;overflow-y: scroll;">
+                        <span id="bldg-slot-area"></span>
+                    </div>
+                </div>
+            </th>
+            
+            <th class="canvas_space">
+                <canvas id="gameCanvas"></canvas>
+            </th> 
+
+            <th class="ui-set side-bar">
+                <div class="col" style="height:40%;">
+                    <h3 class="text-center">Status</h3>
+    
+                    <table class="table table-dark table-hover">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Condition</th>
+                                <td id="cond_text">[cond_text]</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" id="desc_text" style="font-weight: normal;">
+                                    [desc_text]
+                                </th>
+                            <tr>
+                            <tr>
+                                <th scope="row">Tasks</th>
+                                <td id="task_text">[task_text]</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" style="font-weight: normal;">
+                                    <div class="progress bg-secondary">
+                                        <div class="progress-bar bg-light task-bar" role="progressbar"></div>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th colspan="2" class="text-center text-muted" style="font-weight: normal;">
+                                    [<span id="task-cur">0</span>/<span id="task-goal">0</span>]
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+                </div>
+    
+                <div class="col text-center" style="height:60%;padding: 0;">
+                    <h3 class="text-center">Upgrades</h3>
+                    <div id="bldg-slots" style="height: 90%;overflow-y:scroll;">
+                        <span id="upgrade-slot-area"></span>
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </table>
+
+    <!-- <div class="row no-gutters">
         <div class="ui-set col side-bar">
 
-            <div class="col text-center" style="height:20%;">
-                <h3>boringGame</h3><hr>
-                Power Generatred (MWs)
-                <h1 id="kgs_display">0</h1>
-                <h5><span id="rate_display"></span> MW/s</h5>
-                <span class="text-muted focus-notice">Productions are halved when losing focus</span>
-            </div>
 
-            <div class="col text-center" style="height:20%;">
-                <button id="btn-dig" class="btn btn-secondary">
-                    <i class="fas fa-plus"></i>
-                </button>
-            </div>
-
-            <div class="col" style="height:60%;padding: 0;box-sizing: content-box;">
-                <h3 class="text-center">Buildings</h3>
-                <div id="bldg-slots" style="height: 90%;overflow-y: scroll;">
-                    <span id="bldg-slot-area"></span>
-                </div>
-            </div>
 
         </div>
 
         <div class="ui-set col-lg-7 text-center" style="color: grey;">
-            <!-- <h1>CANVAS</h1> -->
             <canvas id="gameCanvas"></canvas>
         </div>
-
-        <!-- <div class="ui-set col-lg-3 text-center" style="color: grey;overflow-y: scroll !important;">
-            <h1>MESSAGE</h1>
-
-            <div class="col" style="padding: 0;box-sizing: content-box;">
-                <div id="words-slots" style="height: 90%;overflow-y: scroll;">
-                    <span id="word-outputter"> -->
-                        <!-- <div class="word-slot"> -->
-                            <!-- sasasd -->
-                        <!-- </div> -->
-                    <!-- </span>
-                </div>
-            </div>
-        </div> -->
 
         <div class="ui-set col side-bar">
 
@@ -107,6 +149,6 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
     </div>
 </body>

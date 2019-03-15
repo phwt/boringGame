@@ -233,13 +233,16 @@ $(document).ready(function(){
     var randomInt = (i, j) => Math.floor(Math.random()*(Math.floor(j)-Math.ceil(i)+1))+Math.ceil(i);
 
     gameCanvas = document.getElementById('gameCanvas');
-    wth = $(window).width();hth = $(window).height();
+    // wth = $(window).width() - ($(window).width() * (80/100));
+    wth = $(window).width() * (60/100);
+    // wth = $(window).width();
+    hth = $(window).height();
     gameCanvas.width = wth;
     gameCanvas.height = hth;
     var ctx = gameCanvas.getContext("2d");
     ctx.fillStyle = "#FC4646";
     ctx.beginPath();
-    ctx.arc(wth/2, hth*1.5, wth/1.5, 0, 2 * Math.PI);
+    ctx.arc(wth/2, hth*1.5, wth, 0, 2 * Math.PI);
     ctx.fill();
 
     function calcDist(x1, y1, x2, y2){
@@ -266,7 +269,7 @@ $(document).ready(function(){
         posx = randomInt(0, wth);
         posy = randomInt(0, hth);
         // console.log(calcDist(wth/2, hth*1.5, posx, posy) + ' ' + wth/1.5);
-        while(calcDist(wth/2, hth*1.5, posx, posy) > wth/1.5){
+        while(calcDist(wth/2, hth*1.5, posx, posy) > wth){
             posx = randomInt(0, wth);
             posy = randomInt(0, hth);
         }
