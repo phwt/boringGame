@@ -31,12 +31,28 @@ $(document).ready(function(){
 
     function currentStory(){
         for(i in story){
-            $('#cond_text').text(story[i]['cond']);
-            $('#desc_text').text(story[i]['desc']);
-            $('#task_text').text(story[i]['task']);
+            if(story[i]['req_b'] < story[i]['req_a']){
+                $('#cond_text').text(story[i]['cond']);
+                $('#desc_text').text(story[i]['desc']);
+                $('#task_text').text(story[i]['task']);
+                $('.task-bar').css('width', (story[i]['req_b']/story[i]['req_a'])*100 + "%");
+                $('#task_cur').text(story[i]['req_b']);
+                $('#task_goal').text(story[i]['req_a']);
+                break;
+            }else{
+                // break;
+            }
         }
     }
+
+    loadStory();
     currentStory();
+
+    setInterval(() => {
+        loadStory();
+        currentStory();
+    }, 1000);
+
     function showBoxes(){
         $("#bldg-slot-area").empty();
         keys = Object.keys(buildings);
