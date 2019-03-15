@@ -39,8 +39,6 @@ $(document).ready(function(){
                 $('#task-cur').text(story[i]['req_b']);
                 $('#task-goal').text(story[i]['req_a']);
                 break;
-            }else{
-                // break;
             }
         }
     }
