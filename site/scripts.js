@@ -5,6 +5,9 @@ $(document).ready(function(){
     var getRate = (i) => (buildings[i]['base_speed'] * getUpgradeLevel(i)) * local_save['buildings'][i];
     var numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
+    // var objDiv = document.getElementById("words-slots");
+    // objDiv.scrollTop = objDiv.scrollHeight;
+
     // newGame();   
     function newGame(){
         local_save = {
@@ -180,16 +183,16 @@ $(document).ready(function(){
 
         var outfocus = 0;
     $('.focus-notice').hide();
-    // $(window).focusout(function() {
-    //     outfocus = 1;
-    //     document.title = "Boring Game - Halves Production";
-    //     $('.focus-notice').toggle();
-    // });
-    // $(window).focus(function() {
-    //     outfocus = 0;
-    //     document.title = "Boring Game - Full Production";
-    //     $('.focus-notice').toggle();
-    // });
+    $(window).focusout(function() {
+        outfocus = 1;
+        document.title = "Boring Game - Halves Production";
+        $('.focus-notice').toggle();
+    });
+    $(window).focus(function() {
+        outfocus = 0;
+        document.title = "Boring Game - Full Production";
+        $('.focus-notice').toggle();
+    });
 
     setInterval(() => {
         var rate = Math.floor(getRateAll() / ((outfocus) ? 2 : 1));

@@ -16,21 +16,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div class="row no-gutters align-items-center">
+    <div class="row no-gutters">
         <div class="ui-set col side-bar">
 
             <div class="col text-center" style="height:20%;">
                 <h3>boringGame</h3><hr>
-                Power Generatred (MW)
+                Power Generatred (MWs)
                 <h1 id="kgs_display">0</h1>
                 <h5><span id="rate_display"></span> MW/s</h5>
                 <span class="text-muted focus-notice">Productions are halved when losing focus</span>
             </div>
 
             <div class="col text-center" style="height:20%;">
-                <!-- <h3 class="text-center">Excavator</h3> -->
                 <button id="btn-dig" class="btn btn-secondary">
-                    <!-- <img src="assets/unmanned-aerial-vehicle.png"/> -->
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -45,19 +43,60 @@
         </div>
 
         <div class="ui-set col-lg-7 text-center" style="color: grey;">
-            <h1>PLACEHOLDER</h1>
-            <!-- BBB -->
-            <!-- <svg class="icon">
-                <use xlink:href="building_sprites.svg#ar" />
-            </svg> -->
+            <h1>CANVAS</h1>
         </div>
 
-        <div class="ui-set col side-bar">
-            <h3 class="text-center">Upgrades</h3>
-            <div id="bldg-slots" style="height: 90%;overflow-y:scroll;">
-                <span id="upgrade-slot-area"></span>
+        <!-- <div class="ui-set col-lg-3 text-center" style="color: grey;overflow-y: scroll !important;">
+            <h1>MESSAGE</h1>
+
+            <div class="col" style="padding: 0;box-sizing: content-box;">
+                <div id="words-slots" style="height: 90%;overflow-y: scroll;">
+                    <span id="word-outputter"> -->
+                        <!-- <div class="word-slot"> -->
+                            <!-- sasasd -->
+                        <!-- </div> -->
+                    <!-- </span>
+                </div>
             </div>
-            <!-- CCC -->
+        </div> -->
+
+        <div class="ui-set col side-bar">
+
+            <div class="col" style="height:30%;">
+                <h3 class="text-center">Status</h3>
+                <table class="table table-dark table-hover">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Condition</th>
+                            <td>Brink of extinction</td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="font-weight: normal;">
+                                There is no power left on earth. Humanity is on the brink of extinction.
+                            </th>
+                        <tr>
+                        <tr>
+                            <th scope="row">Tasks</th>
+                            <td>Establish a biofuel plant</td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="font-weight: normal;">
+                                <div class="progress bg-secondary">
+                                    <div class="progress-bar bg-light" role="progressbar" style="width: 25%"></div>
+                                </div>
+                            </th>
+                        <tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col text-center" style="height:70%;padding: 0;">
+                <h3 class="text-center">Upgrades</h3>
+                <div id="bldg-slots" style="height: 90%;overflow-y:scroll;">
+                    <span id="upgrade-slot-area"></span>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>

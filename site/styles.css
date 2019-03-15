@@ -1,5 +1,5 @@
 .side-bar{
-    background: rgb(46, 46, 46);
+    background: #343A40;
     height: 100%;
     color: white;
 }
@@ -7,7 +7,7 @@
     padding-top: 5%;
 }
 body{
-    background: #555;
+    background: #3E464D;
     font-family: 'Roboto', sans-serif;
 }
 /*show column boundaries*/
@@ -16,7 +16,7 @@ body{
 }
 .slot{
     padding: 8px;
-    background: rgb(58, 58, 58);
+    background: #292E33;
     transition: .2s;
 } 
 .slot:hover{
@@ -38,6 +38,7 @@ body{
 }
 .slot > .col-md-9{
     padding-left: 1%;
+    text-align: left;
 }
 #btn-dig{
     width: 30%;
@@ -90,4 +91,11 @@ body{
     display: none;
     padding-left: 28px;
     padding-top: 0.5em
+}
+.word-slot{
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    text-align: right;
+    margin-top: 1em;
+    padding: 0.8em 1em 0.8em 1em;
 }
