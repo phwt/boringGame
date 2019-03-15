@@ -1,7 +1,7 @@
 <head>
     <title>Boring Game</title>
 
-    <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/> -->
     <link rel="stylesheet" type="text/css" href="styles.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet"> -->
@@ -22,7 +22,7 @@
     <table class="grid">
         <tr>
             <th class="ui-set side-bar">
-                <div class="col text-center" style="height:20%;">
+                <div style="height:20%;">
                     <h3>boringGame</h3><hr>
                     Power Generatred (MWs)
                     <h1 id="kgs_display">0</h1>
@@ -30,8 +30,8 @@
                     <span class="text-muted focus-notice">Productions are halved when losing focus</span>
                 </div>
     
-                <div class="col text-center" style="height:20%;">
-                    <button id="btn-dig" class="btn btn-secondary">
+                <div style="height:20%;">
+                    <button id="btn-dig">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -39,7 +39,25 @@
                 <div class="col" style="height:60%;padding: 0;box-sizing: content-box;">
                     <h3 class="text-center">Buildings</h3>
                     <div id="bldg-slots" style="height: 90%;overflow-y: scroll;">
-                        <span id="bldg-slot-area"></span>
+                        <span id="bldg-slot-areas">
+
+                                <div style='position: relative' class='slot bldg-slot' slot-name=' + keys[i] + '>
+                                        <table>
+                                            <tr>
+                                                <th rowspan="2"><img src='assets/bldg/ar.png'/></th>
+                                                <th class="slot-name">name</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class='greentext'><span class='bldg-cost'>cost </span>MW(s)</span>
+                                                </td>
+                                            </tr>
+                                            <span class='slot-number'>1</span>
+                                        </table>
+                                        <div class='description'>DESC</div>
+                                </div>
+
+                        </span>
                     </div>
                 </div>
             </th>
