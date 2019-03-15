@@ -180,9 +180,9 @@ $(document).ready(function(){
             local_save[(slot == 'bldg') ? 'buildings' : 'upgrades'][type]++;
             local_save['balance'] -= parseInt(cost);
             refreshDisplay();
+            placeBuilding(type[0]);
         }
         console.log(type[0]);
-        placeBuilding(type[0]);
         $("#rate_display").text(numberWithCommas(getRateAll()));
     }
 
@@ -194,10 +194,10 @@ $(document).ready(function(){
         $("#kgs_display").text(numberWithCommas(local_save['balance']));
     });
 
-    $(".slot").click(function(){
-        type = $(this).attr('slot-name');
-        buyBuilding(type, ($(this).hasClass('bldg-slot')) ? 'bldg' : 'upgr');
-    });
+    // $(".slot").click(function(){
+    //     type = $(this).attr('slot-name');
+    //     buyBuilding(type, ($(this).hasClass('bldg-slot')) ? 'bldg' : 'upgr');
+    // });
 
     function getRateAll(){
         var total = 0;
