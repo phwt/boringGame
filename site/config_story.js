@@ -5,17 +5,17 @@ story = {
         cond: "Brink of extniction",
         desc: "There is no power left on earth. Humanity is on the brink of extinction.",
         task: "Use generator to manually generate a power",
-        req_b: local_save["stats"]["total_pwr"],
-        req_a: 100
+        req_b: local_save.stats.total_pwr,
+        req_a: 50
     },
     2: {
         cond: "Brink of extniction",
         desc: "There is no power left on earth. Humanity is on the brink of extinction.",
         task: "Build a biofuel plant",
-        req_b: local_save["buildings"]["1_biof"],
+        req_b: local_save.buildings["1_biof"],
         req_a: 3
     },
-    3: {
+    99: {
         cond: "Humanity is grateful",
         desc: "You saved the world!",
         task: "Planet earth is blue and there is nothing left to do",
