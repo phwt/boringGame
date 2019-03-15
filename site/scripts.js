@@ -76,7 +76,7 @@ $(document).ready(function(){
                     "</div>"+
                     "<div class='col-md-9 slot-cost'>"+
                         "<b>"+ name +"</b><br>"+
-                        "<span class='bldg-cost'>"+ cost + "</span> MW(s)"+
+                        "<span class='greentext'><span class='bldg-cost'>"+ cost + "</span> MW(s)</span>"+
                     "</div>"+
 
                     "<div class='description' >"+
@@ -113,7 +113,7 @@ $(document).ready(function(){
                     "</div>"+
                     "<div class='col-md-9 slot-cost'>"+
                         "<b>"+ name +"</b><br>"+
-                        "<span class='upgrade-cost'>"+ cost + "</span> MW(s)"+
+                        "<span class='greentext'><span class='upgrade-cost'>"+ cost + "</span> MW(s)</span>"+
                     "</div>"+
 
                     "<div class='description' >"+
@@ -203,7 +203,7 @@ $(document).ready(function(){
         return total;
     }
 
-        var outfocus = 0;
+    var outfocus = 0;
     $('.focus-notice').hide();
     $(window).focusout(function() {
         outfocus = 1;
