@@ -8,7 +8,7 @@ $(document).ready(function(){
     // var objDiv = document.getElementById("words-slots");
     // objDiv.scrollTop = objDiv.scrollHeight;
 
-    // newGame();   
+    // newGame();
     function newGame(){
         local_save = {
             name: '',
@@ -29,6 +29,14 @@ $(document).ready(function(){
     if(!localStorage.boring_data){newGame();}else{loadSave();} //If save game does not exist. Create new one.
     refreshDisplay();
 
+    function currentStory(){
+        for(i in story){
+            $('#cond_text').text(story[i]['cond']);
+            $('#desc_text').text(story[i]['desc']);
+            $('#task_text').text(story[i]['task']);
+        }
+    }
+    currentStory();
     function showBoxes(){
         $("#bldg-slot-area").empty();
         keys = Object.keys(buildings);
