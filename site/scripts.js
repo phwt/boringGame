@@ -36,8 +36,8 @@ $(document).ready(function(){
                 $('#desc_text').text(story[i]['desc']);
                 $('#task_text').text(story[i]['task']);
                 $('.task-bar').css('width', (story[i]['req_b']/story[i]['req_a'])*100 + "%");
-                $('#task_cur').text(story[i]['req_b']);
-                $('#task_goal').text(story[i]['req_a']);
+                $('#task-cur').text(story[i]['req_b']);
+                $('#task-goal').text(story[i]['req_a']);
                 break;
             }else{
                 // break;
