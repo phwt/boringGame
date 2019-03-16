@@ -43,7 +43,7 @@ upgrades = {
         name: "First-generation biofuels",
         description: "Biofuel Plant efficiency x2",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 100,
         tgt_bldg: "1_biof",
         multp: 2
     },
@@ -51,7 +51,7 @@ upgrades = {
         name: "Second-generation biofuels",
         description: "Biofuel Plant efficiency x3",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 500,
         tgt_bldg: "1_biof",
         multp: 3
     },
@@ -59,7 +59,7 @@ upgrades = {
         name: "Third-generation biofuels",
         description: "Biofuel Plant efficiency x4",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 10000,
         tgt_bldg: "1_biof",
         multp: 4
     },
@@ -67,7 +67,7 @@ upgrades = {
         name: "Coal Station",
         description: "Fossil-fuel Power Plant efficiency x2",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 1000,
         tgt_bldg: "2_coal",
         multp: 2
     },
@@ -75,7 +75,7 @@ upgrades = {
         name: "Natural Gas Station",
         description: "Fossil-fuel Power Plant efficiency x3",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 5000,
         tgt_bldg: "2_coal",
         multp: 3
     },
@@ -83,7 +83,7 @@ upgrades = {
         name: "Petroleum Station",
         description: "Fossil-fuel Power Plant efficiency x4",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 50000,
         tgt_bldg: "2_coal",
         multp: 4
     },
@@ -91,7 +91,7 @@ upgrades = {
         name: "Fixed Arrays",
         description: "Photovoltaic Station efficiency x2",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 10000,
         tgt_bldg: "3_sun",
         multp: 2
     },
@@ -99,7 +99,7 @@ upgrades = {
         name: "Single-axis Arrays",
         description: "Photovoltaic Station efficiency x3",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 50000,
         tgt_bldg: "3_sun",
         multp: 3
     },
@@ -107,7 +107,7 @@ upgrades = {
         name: "Dual-axis Arrays",
         description: "Photovoltaic Station efficiency x4",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 100000,
         tgt_bldg: "3_sun",
         multp: 4
     },
@@ -115,7 +115,7 @@ upgrades = {
         name: "Vertical-axis Blades",
         description: "Wind Farm efficiency x2",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 100000,
         tgt_bldg: "4_wind",
         multp: 2
     },
@@ -123,7 +123,7 @@ upgrades = {
         name: "Horioztontal-axis Blades",
         description: "Photovoltaic Station efficiency x3",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 500000,
         tgt_bldg: "4_wind",
         multp: 3
     },
@@ -131,7 +131,7 @@ upgrades = {
         name: "Darrieus Blades",
         description: "Photovoltaic Station efficiency x4",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 5000000,
         tgt_bldg: "4_wind",
         multp: 4
     },
@@ -139,7 +139,7 @@ upgrades = {
         name: "Stainless Blade",
         description: "Hydroelectric Dam efficiency x2",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 1000000,
         tgt_bldg: "5_water",
         multp: 2
     },
@@ -147,7 +147,7 @@ upgrades = {
         name: "Nikel Blade",
         description: "Hydroelectric Dam efficiency x3",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 5000000,
         tgt_bldg: "5_water",
         multp: 3
     },
@@ -155,7 +155,7 @@ upgrades = {
         name: "Titanium Blade",
         description: "Hydroelectric Dam efficiency x4",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 10000000,
         tgt_bldg: "5_water",
         multp: 4
     },          
@@ -163,7 +163,7 @@ upgrades = {
         name: "Sub-sea Platform",
         description: "Offshore Rig efficiency x2",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 10000000,
         tgt_bldg: "6_oil",
         multp: 2
     },
@@ -171,7 +171,7 @@ upgrades = {
         name: "Fixed Platform",
         description: "Offshore Rig efficiency x3",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 50000000,
         tgt_bldg: "6_oil",
         multp: 3
     },
@@ -179,7 +179,7 @@ upgrades = {
         name: "Semi-submersibles Platform",
         description: "Offshore Rig efficiency x4",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 100000000,
         tgt_bldg: "6_oil",
         multp: 4
     },
@@ -187,7 +187,7 @@ upgrades = {
         name: "Dry Steam",
         description: "Geothermal Plant efficiency x2",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 100000000,
         tgt_bldg: "7_thermal",
         multp: 2
     },
@@ -195,7 +195,7 @@ upgrades = {
         name: "Flash Stream",
         description: "Geothermal Plant efficiency x3",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 500000000,
         tgt_bldg: "7_thermal",
         multp: 3
     },
@@ -203,7 +203,7 @@ upgrades = {
         name: "Binary Cycle",
         description: "Geothermal Plant efficiency x4",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 1000000000,
         tgt_bldg: "7_thermal",
         multp: 4
     },
@@ -211,7 +211,7 @@ upgrades = {
         name: "Pu-239 Reactor",
         description: "Nuclear Power efficiency x2",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 1000000000,
         tgt_bldg: "8_nuke",
         multp: 2
     },
@@ -219,7 +219,7 @@ upgrades = {
         name: "U-235 Reactor",
         description: "Nuclear Power efficiency x3",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 5000000000,
         tgt_bldg: "8_nuke",
         multp: 3
     },
@@ -227,7 +227,7 @@ upgrades = {
         name: "Th-232 Reactor",
         description: "Nuclear Power efficiency x4",
         icon: "up-arrow.png",
-        cost: 0,
+        cost: 10000000000,
         tgt_bldg: "8_nuke",
         multp: 4
     }
