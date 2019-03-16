@@ -143,9 +143,9 @@ $(document).ready(function(){
         });
         $(".slot").hover(
             function(){
-                $(this).find(".description").slideToggle("fast", function(){});
+                $(this).find(".description").stop().slideToggle("fast", function(){});
             }, function(){
-                $(this).find(".description").slideToggle("fast", function(){});
+                $(this).find(".description").stop().slideToggle("fast", function(){});
             }
         );
         refreshSlot();
@@ -195,8 +195,16 @@ $(document).ready(function(){
         $("#rate_display").text(numberWithCommas(getRateAll()));
     }
 
-    $("#btn-dig").click(function(){
-        thiscycle = getUpgradeLevel('dig')
+    // $("#btn-dig").click(function(){
+    // });
+
+    $("#btn-dig").mouseup(function(){
+        $(this).clearQueue().delay(1000).queue(function(n) {
+            $(this).html('<i style="font-size: 1.5em" class="fas fa-bolt"></i>').fadeIn('slow');
+        });
+    }).mousedown(function(){
+        thiscycle = getUpgradeLevel('dig');
+        $(this).html('+' + thiscycle);
         local_save['stats']['click']++;
         local_save['stats']['total_pwr']+=thiscycle;
         local_save['balance']+=thiscycle;
