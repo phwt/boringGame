@@ -59,7 +59,7 @@ $(document).ready(function(){
                 $('#pbar').css('width', (story[i]['req_b']/story[i]['req_a'])*100 + "%");
                 $('#task-cur').text(story[i]['req_b']);
                 $('#task-goal').text(story[i]['req_a']);
-                break;
+                return i;
             }
         }
     }
@@ -72,7 +72,13 @@ $(document).ready(function(){
     b = 69;
     setInterval(() => {
         loadStory();
-        currentStory();
+        color = currentStory();
+        r = 252 + (color*-17);
+        g = 69 + (color*2.25);
+        b = 69 + (color*11.5);
+        ctxb.fillStyle = "rgb("+r+", "+g+", "+b+")";
+        ctxb.arc(wth/2, hth*1.5, wth, 0, 2 * Math.PI);
+        ctxb.fill();
         // r-=1;g+=0.13;b+=0.67;
         // ctxb.fillStyle = "rgb("+r+", "+g+", "+b+")";
         // console.log(r, g, b);
@@ -307,9 +313,7 @@ $(document).ready(function(){
     var ctxb = backCanvas.getContext("2d");
     ctxb.beginPath();
 
-    ctxb.fillStyle = "rgb("+r+", "+g+", "+b+")";
-    ctxb.arc(wth/2, hth*1.5, wth, 0, 2 * Math.PI);
-    ctxb.fill();
+    
 
     function calcDist(x1, y1, x2, y2){
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
