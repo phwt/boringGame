@@ -1,3 +1,19 @@
+function newGame(){
+    local_save = {
+        name: '',
+        balance: 0,
+        buildings: {},
+        upgrades: {},
+        stats: {
+            click: 0,
+            total_pwr: 0
+        }
+    }
+    for(i in buildings){Object.assign(local_save['buildings'], {[i]: 0})}
+    for(i in upgrades){Object.assign(local_save['upgrades'], {[i]: 0})}
+    localStorage.boring_data = JSON.stringify(local_save);
+}
+
 $(document).ready(function(){
 
     var saveGame = () => localStorage.boring_data = JSON.stringify(local_save);;
@@ -6,25 +22,29 @@ $(document).ready(function(){
     var numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     // newGame();
-    function newGame(){
-        local_save = {
-            name: '',
-            balance: 0,
-            buildings: {},
-            upgrades: {},
-            stats: {
-                click: 0,
-                total_pwr: 0
-            }
-        }
-        for(i in buildings){Object.assign(local_save['buildings'], {[i]: 0})}
-        for(i in upgrades){Object.assign(local_save['upgrades'], {[i]: 0})}
-        localStorage.boring_data = JSON.stringify(local_save);
-    }
+    
 
     window.onunload = function(){saveGame();} //Automatically save game data when user leaves
     if(!localStorage.boring_data){newGame();}else{loadSave();} //If save game does not exist. Create new one.
     refreshDisplay();
+
+    function displayNewGame(){
+        $('#progress, .task-sts').hide();
+        $('.endbtn').empty();
+        $('.endbtn').append("<button class='end-btn'>Save Another Planet</button>");    
+        $('.endbtn, .end-btn').off('click');
+        $('.endbtn, .end-btn').click(function(){
+            $(".status-table").fadeOut();
+            $('.usure').fadeIn();
+        });
+    }
+
+    // $('.endy').click(function(){
+    //     newGame();location.reload();
+    // });
+    // $('.endn').click(function(){
+    //     location.reload();
+    // });
 
     function currentStory(){
         for(i in story){
@@ -32,6 +52,10 @@ $(document).ready(function(){
                 $('#cond_text').text(story[i]['cond']);
                 $('#desc_text').text(story[i]['desc']);
                 $('#task_text').text(story[i]['task']);
+                if(story[i]['req_b'] == -1){
+                    displayNewGame();
+                    break;
+                }
                 $('#pbar').css('width', (story[i]['req_b']/story[i]['req_a'])*100 + "%");
                 $('#task-cur').text(story[i]['req_b']);
                 $('#task-goal').text(story[i]['req_a']);
@@ -55,7 +79,7 @@ $(document).ready(function(){
         // ctxb.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
         // ctxb.arc(wth/2, hth*1.5, wth, 0, 2 * Math.PI);
         // ctxb.fill();
-    }, 100);
+    }, 300);
 
     function showBoxes(){
         $("#bldg-slot-area").empty();

@@ -14,7 +14,6 @@
     <script src="config_buildings.js"></script>
     <script src="config_upgrades.js"></script>
     <script src="config_story.js"></script>
-    <script src="scripts.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -60,7 +59,11 @@
             <th class="ui-set side-bar">
                 <div class="col" style="height:40%;">
                     <h3>Status</h3>
-    
+                    <div class="usure" style="display: none"><br>
+                        <b>New Game (This action cannot be undone)</b><br><br>
+                        <button class="end-btn endy" onclick="newGame();location.reload();">Yes</button>
+                        <button class="end-btn endn" onclick="location.reload();">No</button>
+                    </div>
                     <table class="status-table">
                         <tbody>
                             <tr>
@@ -77,7 +80,7 @@
                                 <td id="task_text">[task_text]</td>
                             </tr>
                             <tr>
-                                <th colspan="2" style="font-weight: normal;">
+                                <th colspan="2" class="endbtn" style="font-weight: normal;">
 
                                     <div id="progress">
                                         <div id="pbar"></div>
@@ -86,7 +89,7 @@
                                 </th>
                             </tr>
                             <tr>
-                                <th colspan="2" class="text-center text-muted" style="font-weight: normal;">
+                                <th colspan="2" class="text-center text-muted task-sts" style="font-weight: normal;">
                                     [<span id="task-cur">0</span>/<span id="task-goal">0</span>]
                                 </th>
                             </tr>
@@ -107,3 +110,4 @@
     
     </div>
 </body>
+<script src="scripts.js"></script>

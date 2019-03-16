@@ -214,3 +214,14 @@ canvas{
     top:50%;
     transform: translate(-50%, -50%);
 }
+.end-btn{
+    background: #333;
+    color: white;
+    border: 0px;
+    padding: 10 20;
+    margin: 0;
+    border-radius: 5px;
+}
+.end-btn:hover{
+    cursor: pointer;
+}
