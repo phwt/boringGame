@@ -5,9 +5,6 @@ $(document).ready(function(){
     var getRate = (i) => (buildings[i]['base_speed'] * getUpgradeLevel(i)) * local_save['buildings'][i];
     var numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    // var objDiv = document.getElementById("words-slots");
-    // objDiv.scrollTop = objDiv.scrollHeight;
-
     // newGame();
     function newGame(){
         local_save = {

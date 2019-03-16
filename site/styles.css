@@ -12,6 +12,17 @@ body{
     margin: 0;
     padding: 0;
     overflow: hidden;
+    color: white;
+}
+h1, h2, h3, h4, h5, h6{
+    padding: 1%;
+    margin: 0;
+}
+#main-info{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 /*show column boundaries*/
 .side-bar > .col:nth-child(odd){
@@ -46,15 +57,28 @@ th img{
     padding-left: 1%;
     text-align: left;
 }
-#btn-dig{
+/* #btn-dig{
     background: grey;
     border: 0px;
-    width: 30%;
-    height: 50%;
-    /* position: absolute; */
-    /* top: 50%; */
-    /* transform: translate(-50%, -50%);margin-top: 5%; */
-    /* margin-top: 5%; */
+    padding: 10 10;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+#btn-place{
+    position: relative;
+}
+#btn-place button{
+    background: grey;
+    color: white;
+    border: 0px;
+    padding: 45 45;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 ::-webkit-scrollbar              {display: none}
 ::-webkit-scrollbar-button       {}
@@ -85,6 +109,7 @@ th img{
 } */
 #kgs_display{
     font-weight: 700;
+    font-size: 2.5em;
 }
 .slot-cost{
     font-weight: 300;
