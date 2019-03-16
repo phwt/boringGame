@@ -69,19 +69,20 @@ $(document).ready(function(){
             if(amount==0){toBreak++;}
 
             $("#bldg-slot-area").append(
-                "<div style='position: relative' class='slot bldg-slot row no-gutters' slot-name='" + keys[i] + "'>"+
-                    "<span class='slot-number'>"+amount+"</span>"+
-                    "<div class='col-md-3 text-center'>"+
-                        "<img src='assets/"+ icon +"'/>"+
-                    "</div>"+
-                    "<div class='col-md-9 slot-cost'>"+
-                        "<b>"+ name +"</b><br>"+
-                        "<span class='greentext'><span class='bldg-cost'>"+ cost + "</span> MW(s)</span>"+
-                    "</div>"+
-
-                    "<div class='description' >"+
-                        desc+' - '+speed+' MW/s'+
-                    "</div>"+
+                "<div style='position: relative' class='slot bldg-slot' slot-name=" + keys[i] + ">"+
+                    "<table>"+
+                        "<tr>"+
+                            "<th rowspan='2'><img src='assets/" + icon + "'/></th>"+
+                            "<th class='slot-name'>" + name + "</th>"+
+                        "</tr>"+
+                        "<tr>"+
+                            "<td>"+
+                                "<span class='greentext'><span class='bldg-cost'>" + cost + " </span>MW(s)</span>"+
+                            "</td>"+
+                        "</tr>"+
+                        "<span class='slot-number'>" + amount + "</span>"+
+                    "</table>"+
+                    "<div class='description'>" + desc + " - " + speed + "MW/s</div>"+
                 "</div>"
             );
         }
@@ -107,18 +108,20 @@ $(document).ready(function(){
             disabled = cost > local_save['balance'];
 
             $("#upgrade-slot-area").append(
-                "<div class='slot upgrade-slot row no-gutters' slot-name='" + keys[i] + "'>"+
-                    "<div class='col-md-3 text-center'>"+
-                        "<img src='assets/"+ icon +"'/>"+
-                    "</div>"+
-                    "<div class='col-md-9 slot-cost'>"+
-                        "<b>"+ name +"</b><br>"+
-                        "<span class='greentext'><span class='upgrade-cost'>"+ cost + "</span> MW(s)</span>"+
-                    "</div>"+
-
-                    "<div class='description' >"+
-                        desc+
-                    "</div>"+
+                
+                "<div style='position: relative' class='slot upgrade-slot' slot-name=" + keys[i] + ">"+
+                    "<table>"+
+                        "<tr>"+
+                            "<th rowspan='2'><img style='width: 50%' src='assets/" + icon + "'/></th>"+
+                            "<th class='slot-name'>" + name + "</th>"+
+                        "</tr>"+
+                        "<tr>"+
+                            "<td>"+
+                                "<span class='greentext'><span class='upgrade-cost'>" + cost + " </span>MW(s)</span>"+
+                            "</td>"+
+                        "</tr>"+
+                    "</table>"+
+                    "<div class='description'>" + desc + "</div>"+
                 "</div>"
             );
         }
