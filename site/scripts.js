@@ -73,6 +73,7 @@ $(document).ready(function(){
     setInterval(() => {
         loadStory();
         color = currentStory();
+        color = (isNaN(color)) ? 12 : color;
         r = 252 + (color*-17);
         g = 69 + (color*2.25);
         b = 69 + (color*11.5);
@@ -81,7 +82,7 @@ $(document).ready(function(){
         ctxb.fill();
         // r-=1;g+=0.13;b+=0.67;
         // ctxb.fillStyle = "rgb("+r+", "+g+", "+b+")";
-        // console.log(r, g, b);
+        console.log(r, g, b);
         // ctxb.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
         // ctxb.arc(wth/2, hth*1.5, wth, 0, 2 * Math.PI);
         // ctxb.fill();
@@ -129,7 +130,7 @@ $(document).ready(function(){
                 if(story[i]['req_b'] < story[i]['req_a']){return i;}
             }
         }
-        console.log(getCurrentStory());
+        // console.log(getCurrentStory());
 
         $("#upgrade-slot-area").empty();
         keys = Object.keys(upgrades);
@@ -239,7 +240,7 @@ $(document).ready(function(){
             refreshDisplay();
             placeBuilding(type[0]);
         }
-        console.log(type[0]);
+        // console.log(type[0]);
         $("#rate_display").text(numberWithCommas(getRateAll()));
     }
 
