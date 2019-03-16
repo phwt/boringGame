@@ -230,5 +230,13 @@ upgrades = {
         cost: 10000000000,
         tgt_bldg: "8_nuke",
         multp: 4
+    },
+    "sat":{
+        name: "Lanuch Satellite",
+        description: "Give us a better overview of the damage",
+        icon: "up-arrow.png",
+        cost: 100000,
+        tgt_bldg: none,
+        multp: 4
     }
 }
