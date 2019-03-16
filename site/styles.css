@@ -1,5 +1,5 @@
 .side-bar{
-    background: #343A40;
+    background: #1d1d1d;
     height: 100%;
     color: white;
 }
@@ -7,16 +7,23 @@
     padding-top: 5%;
 }
 body{
-    background: #3E464D;
+    background: #111111;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     overflow: hidden;
     color: white;
 }
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h5, h6{
     padding: 1%;
     margin: 0;
+}
+h4{
+    font-weight: 400;
+    margin: 0;
+}
+h5{
+    font-weight: 300;
 }
 #main-info{
     position: relative;
@@ -30,7 +37,7 @@ h1, h2, h3, h4, h5, h6{
 }
 .slot{
     padding: 8px;
-    background: #292E33;
+    background: #242424;
     transition: .2s;
 } 
 .slot:hover{
@@ -123,7 +130,8 @@ th img{
 .description{
     display: none;
     padding-left: 28px;
-    padding-top: 0.5em
+    padding-top: 0.5em;
+    font-weight: 300;
 }
 .word-slot{
     color: white;
@@ -154,9 +162,41 @@ th:nth-child(odd){
     text-align: left;
 }
 table, th, tr, td{
-    padding: 0;
-    margin: 0;
+    /* padding: 0; */
+    /* margin: 0; */
+    border-collapse: collapse;
+}
+table.status-table{
+    /* padding: 100px !important; */
+    margin-right: 2%;
+}
+.status-table td, .status-table th{
+    /* border: 1px solid white; */
+    border-bottom: 1px solid rgb(41, 41, 41);
+    padding: 10px;
 }
 /* .description{ */
     /* display: inline-block; */
 /* } */
+.progress{
+    /* width: 25%; */
+    height: 30px;
+    background-color: grey;
+}
+.progress-bar{
+    width: 25%;
+    background-color: red;
+}
+#progress {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #111;
+}
+  
+#pbar{
+    width: 0;
+    height: 16px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: grey;
+}
