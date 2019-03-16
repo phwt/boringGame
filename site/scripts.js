@@ -49,12 +49,12 @@ $(document).ready(function(){
     setInterval(() => {
         loadStory();
         currentStory();
-        ctxb.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
         // r-=1;g+=0.13;b+=0.67;
-        ctxb.fillStyle = "rgb("+r+", "+g+", "+b+")";
-        console.log(r, g, b);
-        ctxb.arc(wth/2, hth*1.5, wth, 0, 2 * Math.PI);
-        ctxb.fill();
+        // ctxb.fillStyle = "rgb("+r+", "+g+", "+b+")";
+        // console.log(r, g, b);
+        // ctxb.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+        // ctxb.arc(wth/2, hth*1.5, wth, 0, 2 * Math.PI);
+        // ctxb.fill();
     }, 100);
 
     function showBoxes(){
@@ -257,6 +257,10 @@ $(document).ready(function(){
     var ctxb = backCanvas.getContext("2d");
     ctxb.beginPath();
 
+    ctxb.fillStyle = "rgb("+r+", "+g+", "+b+")";
+    ctxb.arc(wth/2, hth*1.5, wth, 0, 2 * Math.PI);
+    ctxb.fill();
+
     function calcDist(x1, y1, x2, y2){
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     }
@@ -282,8 +286,8 @@ $(document).ready(function(){
         posy = randomInt(0, hth);
         // console.log(calcDist(wth/2, hth*1.5, posx, posy) + ' ' + wth/1.5);
         while(calcDist(wth/2, hth*1.5, posx, posy) > wth){
-            posx = randomInt(0, wth);
-            posy = randomInt(0, hth);
+            posx = randomInt(100, wth-100);
+            posy = randomInt(100, hth-100);
         }
         placeBuilding2(type, posx, posy);
     }
