@@ -77,15 +77,17 @@ th img{
     position: relative;
 }
 #btn-place button{
-    background: grey;
+    background: #333;
     color: white;
     border: 0px;
     padding: 45 45;
     margin: 0;
     position: absolute;
+    border-radius: 5px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: .2s;
 }
 ::-webkit-scrollbar              {display: none}
 ::-webkit-scrollbar-button       {}
@@ -94,7 +96,11 @@ th img{
 ::-webkit-scrollbar-thumb        {}
 ::-webkit-scrollbar-corner       {}
 ::-webkit-resizer                {}
-
+button:focus {outline:0;}
+#btn-dig:hover{
+    cursor: pointer;
+    background: rgb(66, 66, 66);
+}
 #btn-dig:active{
     transform: translate(-50%, -45%);
 }
@@ -190,7 +196,7 @@ table.status-table{
 #progress {
     width: 100%;
     border-radius: 5px;
-    background-color: #111;
+    background-color: #333;
 }
   
 #pbar{
@@ -198,7 +204,13 @@ table.status-table{
     height: 16px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    background-color: grey;
+    background-color: #696969;
     transition: 0.4s linear;
     transition-property: width, background-color;
+}
+canvas{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
 }

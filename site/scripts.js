@@ -5,7 +5,7 @@ $(document).ready(function(){
     var getRate = (i) => (buildings[i]['base_speed'] * getUpgradeLevel(i)) * local_save['buildings'][i];
     var numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    newGame();
+    // newGame();
     function newGame(){
         local_save = {
             name: '',
@@ -43,9 +43,18 @@ $(document).ready(function(){
     loadStory();
     currentStory();
 
+    r = 252;
+    g = 69;
+    b = 69;
     setInterval(() => {
         loadStory();
         currentStory();
+        ctxb.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+        // r-=1;g+=0.13;b+=0.67;
+        ctxb.fillStyle = "rgb("+r+", "+g+", "+b+")";
+        console.log(r, g, b);
+        ctxb.arc(wth/2, hth*1.5, wth, 0, 2 * Math.PI);
+        ctxb.fill();
     }, 100);
 
     function showBoxes(){
@@ -207,16 +216,16 @@ $(document).ready(function(){
 
     var outfocus = 0;
     $('.focus-notice').hide();
-    $(window).focusout(function() {
-        outfocus = 1;
-        document.title = "Boring Game - Halves Production";
-        $('.focus-notice').toggle();
-    });
-    $(window).focus(function() {
-        outfocus = 0;
-        document.title = "Boring Game - Full Production";
-        $('.focus-notice').toggle();
-    });
+    // $(window).focusout(function() {
+    //     outfocus = 1;
+    //     document.title = "Boring Game - Halves Production";
+    //     $('.focus-notice').toggle();
+    // });
+    // $(window).focus(function() {
+    //     outfocus = 0;
+    //     document.title = "Boring Game - Full Production";
+    //     $('.focus-notice').toggle();
+    // });
 
     setInterval(() => {
         var rate = Math.floor(getRateAll() / ((outfocus) ? 2 : 1));
@@ -240,10 +249,13 @@ $(document).ready(function(){
     gameCanvas.width = wth;
     gameCanvas.height = hth;
     var ctx = gameCanvas.getContext("2d");
-    ctx.fillStyle = "#FC4646";
     ctx.beginPath();
-    ctx.arc(wth/2, hth*1.5, wth, 0, 2 * Math.PI);
-    ctx.fill();
+
+    backCanvas = document.getElementById('backCanvas');
+    backCanvas.width = wth;
+    backCanvas.height = hth;
+    var ctxb = backCanvas.getContext("2d");
+    ctxb.beginPath();
 
     function calcDist(x1, y1, x2, y2){
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
