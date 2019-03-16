@@ -93,6 +93,14 @@ $(document).ready(function(){
             );
         }
 
+        function getCurrentStory(){
+            loadStory();
+            for(i in story){
+                if(story[i]['req_b'] < story[i]['req_a']){return i;}
+            }
+        }
+        console.log(getCurrentStory());
+
         $("#upgrade-slot-area").empty();
         keys = Object.keys(upgrades);
         for(i=0; i < keys.length; i++){
@@ -100,12 +108,22 @@ $(document).ready(function(){
 
             oftype = parseInt(keys[i][keys[i].length - 1]) - 1;
             prev = keys[i].substring(0, keys[i].length - 1) + oftype;
-
-            if(
-                local_save['upgrades'][keys[i]] || 
-                (!local_save['buildings'][upgrade_sel['tgt_bldg']] && keys[i].substring(0, 3) != 'dig') ||
-                !local_save['upgrades'][prev] && oftype 
-            ){continue;}
+            // console.log(i, parseInt(upgrade_sel.multp), parseInt(storyPos));
+            // loadStory();
+            no = true;
+            if((upgrade_sel.tgt_bldg == undefined)){
+                if(local_save.stats.total_pwr > 100000 || local_save.stats.total_pwr > 15000000){
+                    //7
+                    no = false;
+                }else{
+                    continue;
+                }
+            }
+                if(
+                    (((!local_save['buildings'][upgrade_sel['tgt_bldg']] && keys[i].substring(0, 3) != 'dig') ||
+                    !local_save['upgrades'][prev] && oftype) && no) || local_save['upgrades'][keys[i]]
+                ){continue;}
+            
 
             icon = upgrade_sel['icon'];
             name = upgrade_sel['name'];
