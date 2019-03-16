@@ -199,4 +199,6 @@ table.status-table{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: grey;
+    transition: 0.4s linear;
+    transition-property: width, background-color;
 }

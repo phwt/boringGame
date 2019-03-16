@@ -5,7 +5,7 @@ $(document).ready(function(){
     var getRate = (i) => (buildings[i]['base_speed'] * getUpgradeLevel(i)) * local_save['buildings'][i];
     var numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    // newGame();
+    newGame();
     function newGame(){
         local_save = {
             name: '',
