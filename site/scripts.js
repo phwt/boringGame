@@ -22,7 +22,8 @@ $(document).ready(function(){
     var numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     // newGame();
-    
+    var audio = new Audio('assets/click.mp3');
+    // 
 
     window.onunload = function(){saveGame();} //Automatically save game data when user leaves
     if(!localStorage.boring_data){newGame();}else{loadSave();} //If save game does not exist. Create new one.
@@ -252,6 +253,9 @@ $(document).ready(function(){
             $(this).html('<i style="font-size: 1.5em" class="fas fa-bolt"></i>').fadeIn('slow');
         });
     }).mousedown(function(){
+        audio.pause();
+        audio.currentTime = 0;
+        audio.play();
         thiscycle = getUpgradeLevel('dig');
         $(this).html('+' + thiscycle);
         local_save['stats']['click']++;
