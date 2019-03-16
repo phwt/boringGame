@@ -226,7 +226,7 @@ upgrades = {
     "sat":{
         name: "Launch Satellite",
         description: "Give us a better overview of the damage",
-        icon: "up-arrow.png",
+        icon: "satellite.png",
         cost: 100000,
         tgt_bldg: undefined,
         multp: 7
@@ -234,7 +234,7 @@ upgrades = {
     "dstb":{
         name: "Distribute Power",
         description: "Distribute the power to our neighbor",
-        icon: "up-arrow.png",
+        icon: "next.png",
         cost: 10000000,
         tgt_bldg: undefined,
         multp: 9
