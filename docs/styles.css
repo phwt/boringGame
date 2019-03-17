@@ -233,3 +233,50 @@ canvas{
     bottom: 10;
     position: absolute;
 }
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.modal-content {
+    background-color: #222;
+    margin: auto;
+    padding: 20px;
+    width: 20%;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: .1s;
+}
+
+.close:hover,
+.close:focus {
+    color: #444;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-content > b{
+    font-weight: 500;
+}
+span.sec{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+a, a:visited{
+    color:white;
+}

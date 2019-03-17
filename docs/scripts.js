@@ -358,4 +358,20 @@ $(document).ready(function(){
         // console.log();
     }
 
+    //MODAL SECTION BELOW
+
+    $('.st-btn').click(function(){
+        $('#modal').fadeIn();
+        $('.sts_total_pwr').text(local_save.stats.total_pwr);
+        $('.sts_total_click').text(local_save.stats.click);
+    });
+    
+    $('.close').click(function(){
+        $('#modal').fadeOut();
+    });
+    
+    window.onclick = function(event){
+        if(event.target == modal)
+            $('#modal').fadeOut();
+    }
 });
