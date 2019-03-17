@@ -1,1 +1,1 @@
-# boringGame
+# kinetiGen
