@@ -13,6 +13,7 @@ body{
     padding: 0;
     overflow: hidden;
     color: white;
+    user-select: none;
 }
 h1, h2, h3, h5, h6{
     padding: 1%;
@@ -221,7 +222,14 @@ canvas{
     padding: 10 20;
     margin: 0;
     border-radius: 5px;
+    transition: .2s;
 }
 .end-btn:hover{
     cursor: pointer;
+    background: #444;
+}
+.st-btn{
+    right: 10;
+    bottom: 10;
+    position: absolute;
 }
