@@ -326,17 +326,19 @@ $(document).ready(function(){
 
     function placeBuilding2(type, x, y){
         var img = new Image();
+        var w, h;
+        w = h = 30;
         switch(parseInt(type)){
-            case 1: img.src = "./assets/1_bio.svg";break;
-            case 2: img.src = "./assets/2_fossil.svg";break;
-            case 3: img.src = "./assets/3_solar.svg";break;
-            case 4: img.src = "./assets/4_wind.svg";break;
-            case 5: img.src = "./assets/5_dam.svg";break;
+            case 1: img.src = "./assets/1_bio.svg";w = h = 15;break;
+            case 2: img.src = "./assets/2_fossil.svg";h = 27;break;
+            case 3: img.src = "./assets/3_solar.svg";h = 20;break;
+            case 4: img.src = "./assets/4_wind.svg";w = 10;break;
+            case 5: img.src = "./assets/5_dam.svg";w= 15;break;
             case 6: img.src = "./assets/6_rig.svg";break;
             case 7: img.src = "./assets/7_therm.svg";break;
-            case 8: img.src = "./assets/8_nuke.svg";break;
+            case 8: img.src = "./assets/8_nuke.svg";w = 35;h = 40;break;
         }
-        img.onload = () => ctx.drawImage(img, x, y, 30, 30);
+        img.onload = () => ctx.drawImage(img, x, y, w, h);
     }
 
     // for(i=0; i< 100; i++){
